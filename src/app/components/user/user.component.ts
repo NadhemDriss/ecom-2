@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserComponent implements OnInit {
   dataSource: MatTableDataSource<User>;
 
-  displayedColumns: string[] = ['firstName', 'lastName', 'phone'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'phone', 'action'];
 
   constructor(private US: UserService) {
     this.dataSource = new MatTableDataSource();
@@ -23,5 +23,11 @@ export class UserComponent implements OnInit {
 
   fetchDataSource(): void {
     this.US.getAllUsers().then((data) => (this.dataSource.data = data)); // .data : predifined property to accede the data in dataSource cause type of data source is matTable
+  }
+
+  toggleDeleteUser(element: User): void {
+    this.US.deleteUser(element.id).then(() => {
+      this.fetchDataSource();
+    });
   }
 }

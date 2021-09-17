@@ -38,9 +38,21 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, ProduitComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    UserComponent,
+    ProduitComponent,
+    LoginComponent,
+    UserFormComponent,
+    AddUserComponent,
+    NavBarComponent,
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -75,6 +87,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
