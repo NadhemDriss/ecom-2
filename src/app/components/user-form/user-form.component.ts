@@ -42,8 +42,10 @@ export class UserFormComponent implements OnInit {
   }
 
   updateUser() {
+    
     let data = this.form.value as User;
     let idUser = this.activatedRoute.snapshot.params.id;
+    data.id=idUser;
     //let user = new User(data.firstName, data.lastName, data.phone, idUser);
     this.US.update(data).then(() => {
       this.router.navigate(['/users']);

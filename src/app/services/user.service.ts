@@ -10,18 +10,31 @@ export class UserService {
 
   getAllUsers(): Promise<User[]> {
     //return new Promise((resolve) => resolve(GLOBAL._DB.members));
-    return this.http?.get<User[]>(this.apiUrl + 'all')?.toPromise();
+    let token=localStorage.getItem("mytoken")
+  
+    let options=new HttpHeaders().set("Authorization","Bearer " +token)
+    return this.http?.get<User[]>(this.apiUrl + 'all',{headers:options})?.toPromise();
   }
 
   deleteUser(id: any) {
-    return this.http?.delete<User[]>(this.apiUrl + id)?.toPromise();
+    let token=localStorage.getItem("mytoken")
+  
+    let options=new HttpHeaders().set("Authorization","Bearer " +token)
+    return this.http?.delete<User[]>(this.apiUrl + id,{headers:options})?.toPromise();
   }
 
   getUserById(id: any): Promise<User> {
-    return this.http?.get<User>(this.apiUrl + id)?.toPromise();
+    let token=localStorage.getItem("mytoken")
+  
+    let options=new HttpHeaders().set("Authorization","Bearer " +token)
+    return this.http?.get<User>(this.apiUrl + id,{headers:options})?.toPromise();
   }
 
   update(user: User): Promise<User> {
-    return this.http.post<User>(this.apiUrl, user).toPromise();
+    let token=localStorage.getItem("mytoken")
+  
+    let options=new HttpHeaders().set("Authorization","Bearer " +token)
+    console.log(user);
+    return this.http.put<User>(this.apiUrl, user,{headers:options}).toPromise();
   }
 }

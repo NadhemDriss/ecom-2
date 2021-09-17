@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AppUser } from 'src/app/models/app-user';
+import { LoginService } from 'src/app/services/login.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +17,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  constructor(private fb: FormBuilder, private US: UserService) {
+  constructor(private fb: FormBuilder,
+     private US: UserService,
+      private LS: LoginService,
+      private route: Router) {
     let formControls = {
       username: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -35,14 +41,15 @@ export class LoginComponent implements OnInit {
 
   submit() {
     {
-      let data = this.form.value;
-      // console.log((this.form.get('username')?.value));
-      if (
-        this.form.get('username')?.value == 'nadhem@gmail.com' &&
-        this.form.get('password')?.value == '123456'
-      ) {
-        console.log(data);
-      }
+      let data=this.form.value as AppUser;
+      console.log(this.form);
+      this.LS.loginJwt(data).then((res) => {
+        console.log(res);
+        
+        localStorage.setItem('mytoken',res.token);
+        this.route.navigateByUrl('/users')
+      }).catch ((err)=>{console.log(err)});
+      
     }
   }
 }

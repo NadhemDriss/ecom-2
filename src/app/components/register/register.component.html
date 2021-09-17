@@ -1,0 +1,43 @@
+
+ <form class="my-form" [formGroup]="form" (ngSubmit)="registerUser()"><div fxLayout="column" fxLayoutAlign="space-evenly center" >
+    <h1>Register</h1>
+       <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+              <input  matInput  placeholder="First name"  name="name" formControlName="name" required>
+              <div *ngIf="name?.touched && name?.invalid">
+                <small *ngIf="name?.errors?.required" class="text-danger"
+                  >First Name is required<br
+                /></small>
+              </div>
+            </mat-form-field><br>
+           <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input  matInput  placeholder="Email" formControlName="email" name="email">
+              <div *ngIf="email?.touched &&  email?.invalid">
+                <small *ngIf="email?.errors?.required" class="text-danger"
+                  >E-mail is required<br
+                /></small>
+                <small *ngIf=" email?.errors?.email" class="text-danger"
+                  >Invalid E-mail<br
+                /></small>
+              </div>
+           </mat-form-field><br>
+           <mat-form-field class="full-width">
+              <mat-label>Password</mat-label>
+              <input  matInput  placeholder="Password" type="password" formControlName="password" name="password">
+              <div *ngIf="password?.touched && password?.invalid" class="text-danger">
+                <small *ngIf="password?.errors?.required">Password is required</small>
+                <small *ngIf="password?.errors?.minlength">Password must contains 6 chars at least</small>
+              </div>
+            </mat-form-field><br>
+           <mat-form-field class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input  matInput  placeholder="Password" type="password" formControlName="repassword" name="password">
+         </mat-form-field>
+         <div><button [disabled]="form.invalid || repassword?.value != password?.value" style="margin: 10px; margin-left: 5px;" mat-stroked-button type="submit" color="primary">Register</button>
+         <button mat-stroked-button type="button" [routerLink]="['/login']" color="warn">Login</button></div>
+        </div>
+    </form>
+  
+  
+  

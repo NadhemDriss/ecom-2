@@ -42,6 +42,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     UserFormComponent,
     AddUserComponent,
     NavBarComponent,
+    RegisterComponent,
   ],
   imports: [
     AppRoutingModule,
