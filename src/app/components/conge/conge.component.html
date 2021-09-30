@@ -1,20 +1,27 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Recherche</mat-label>
+      <input matInput placeholder="" (keyup)="applyFilter($event)" />
+    </mat-form-field>
+  </form>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
     <!-- Position Column -->
-    <ng-container matColumnDef="état">
-      <th mat-header-cell *matHeaderCellDef>Etat</th>
+    <ng-container matColumnDef="etat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Etat</th>
       <td mat-cell *matCellDef="let element">{{ element.etat }}</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="nombre de jours">
-      <th mat-header-cell *matHeaderCellDef>Nombre de jours</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre de jours</th>
       <td mat-cell *matCellDef="let element">{{ element.nbrJour }}</td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="date de sortie">
-      <th mat-header-cell *matHeaderCellDef>Date de sortie</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de sortie</th>
       <td mat-cell *matCellDef="let element">
         {{ element.dateSortie | date }}
       </td>
@@ -22,7 +29,7 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="date de retour">
-      <th mat-header-cell *matHeaderCellDef>Date de retour</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de retour</th>
       <td mat-cell *matCellDef="let element">
         {{ element.dateRetour | date }}
       </td>
