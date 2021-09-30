@@ -4,33 +4,27 @@ import { LoginComponent } from '../components/login/login.component';
 import { AppUser } from '../models/app-user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
   private apiUrl = 'http://localhost:8080/api/v1/auth/login';
   private apiRegister = 'http://localhost:8080/api/v1/auth/register';
 
-
-  constructor(private http: HttpClient) {
-
-
-
-
-   }
-   register(appuser:AppUser){
-     return this.http.post<AppUser>(this.apiRegister, appuser).toPromise();
-
-   }
-   loginJwt(appuser:AppUser){
+  constructor(private http: HttpClient) {}
+  register(appuser: AppUser) {
+    return this.http.post<AppUser>(this.apiRegister, appuser).toPromise();
+  }
+  loginJwt(appuser: AppUser) {
     return this.http.post<any>(this.apiUrl, appuser).toPromise();
-   }
-   isLoggedIn() {
-    let token = localStorage.getItem('mytoken')
+  }
 
+  isLoggedIn() {
+    let token = localStorage.getItem('mytoken');
 
     if (token) {
-      return true
+      return true;
+    } else {
+      return false;
     }
-    else { return false }
   }
 }

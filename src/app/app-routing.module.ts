@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { CongeComponent } from './components/conge/conge.component';
+import { LayoutComponentComponent } from './components/layout-component/layout-component.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
@@ -26,6 +28,20 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: UserFormComponent,
+  },
+  {
+    path: '',
+    component: LayoutComponentComponent,
+    children: [
+      {
+        path: 'conge',
+        component: CongeComponent,
+      },
+      {
+        path: 'user',
+        component: UserComponent,
+      },
+    ],
   },
 ];
 
