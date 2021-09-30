@@ -21,14 +21,14 @@
         <button mat-button *ngIf="isExpanded">Info</button>
       </mat-list-item>
 
-      <mat-list-item [routerLink]="'user'">
+      <mat-list-item >
         <mat-icon mat-list-icon>supervisor_account</mat-icon>
         <!-- <span *ngIf="isExpanded">Congés</span> -->
         <button mat-button [matMenuTriggerFor]="menu" *ngIf="isExpanded">
           Congés
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>Achevés</button>
+          <button mat-menu-item [routerLink]="'conge'">Achevés</button>
           <button mat-menu-item>En attente</button>
           <button mat-menu-item>Validés</button>
           <button mat-menu-item>Refusés</button>
