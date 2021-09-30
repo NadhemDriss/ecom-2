@@ -1,0 +1,58 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon
+          mat-list-icon
+          class="chevron-button sidenav-button"
+          (click)="isExpanded = !isExpanded"
+          [ngClass]="{ rotated: isExpanded }"
+          >chevron_right</mat-icon
+        >
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'dashboard'">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <button mat-button *ngIf="isExpanded">Dashboard</button>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'info'">
+        <mat-icon mat-list-icon>important_devices</mat-icon>
+        <button mat-button *ngIf="isExpanded">Info</button>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="'user'">
+        <mat-icon mat-list-icon>supervisor_account</mat-icon>
+        <!-- <span *ngIf="isExpanded">Congés</span> -->
+        <button mat-button [matMenuTriggerFor]="menu" *ngIf="isExpanded">
+          Congés
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Achevés</button>
+          <button mat-menu-item>En attente</button>
+          <button mat-menu-item>Validés</button>
+          <button mat-menu-item>Refusés</button>
+        </mat-menu>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <mat-toolbar>
+      <span>Mohamed Nadhem</span>
+      <span class="example-spacer"></span>
+      <button
+        matTooltip="Déconnexion"
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with heart icon"
+      >
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

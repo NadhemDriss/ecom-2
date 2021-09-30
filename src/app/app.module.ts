@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './components/user/user.component';
-import { ProduitComponent } from './components/produit/produit.component';
 import { LoginComponent } from './components/login/login.component';
 import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +22,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTreeModule } from '@angular/material/tree';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatChipsModule } from '@angular/material/chips';
@@ -43,17 +43,20 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './components/register/register.component';
+import { LayoutComponentComponent } from './components/layout-component/layout-component.component';
+import { CongeComponent } from './components/conge/conge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    ProduitComponent,
     LoginComponent,
     UserFormComponent,
     AddUserComponent,
     NavBarComponent,
     RegisterComponent,
+    LayoutComponentComponent,
+    CongeComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -84,6 +87,7 @@ import { RegisterComponent } from './components/register/register.component';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatDialogModule,
+    MatTreeModule,
     MatTooltipModule,
     MatSnackBarModule,
     MatTableModule,
