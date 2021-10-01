@@ -34,7 +34,7 @@ const routes: Routes = [
     component: LayoutComponentComponent,
     children: [
       {
-        path: 'conge',
+        path: 'conge/:etat',
         component: CongeComponent,
       },
       {

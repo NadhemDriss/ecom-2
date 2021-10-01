@@ -13,25 +13,31 @@
 
       <mat-list-item [routerLink]="'dashboard'">
         <mat-icon mat-list-icon>home</mat-icon>
-        <button mat-button *ngIf="isExpanded">Dashboard</button>
+        <span *ngIf="isExpanded">Dashboard</span>
       </mat-list-item>
 
       <mat-list-item [routerLink]="'info'">
         <mat-icon mat-list-icon>important_devices</mat-icon>
-        <button mat-button *ngIf="isExpanded">Info</button>
+        <span *ngIf="isExpanded">Info</span>
       </mat-list-item>
 
       <mat-list-item >
-        <mat-icon mat-list-icon>supervisor_account</mat-icon>
-        <!-- <span *ngIf="isExpanded">Congés</span> -->
-        <button mat-button [matMenuTriggerFor]="menu" *ngIf="isExpanded">
+        <mat-icon [routerLink]="['/conge', 'all']" mat-list-icon >supervisor_account</mat-icon>
+        <span [routerLink]="['/conge', 'all']" *ngIf="isExpanded">
           Congés
-        </button>
+        </span>
+        <mat-icon
+        *ngIf="isExpanded"
+        mat-list-icon
+        [matMenuTriggerFor]="menu"
+        class="chevron-button sidenav-button"
+        >chevron_right</mat-icon
+      >
         <mat-menu #menu="matMenu">
-          <button mat-menu-item [routerLink]="'conge'">Achevés</button>
-          <button mat-menu-item>En attente</button>
-          <button mat-menu-item>Validés</button>
-          <button mat-menu-item>Refusés</button>
+          <button mat-menu-item [routerLink]="['/conge', 'ACH']">Achevés</button>
+          <button mat-menu-item [routerLink]="['/conge', 'ATT']">En attente</button>
+          <button mat-menu-item [routerLink]="['/conge', 'VAL']">Validés</button>
+          <button mat-menu-item [routerLink]="['/conge', 'REF']">Refusés</button>
         </mat-menu>
       </mat-list-item>
     </mat-nav-list>
