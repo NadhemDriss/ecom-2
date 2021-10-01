@@ -3,7 +3,9 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Conge } from 'src/app/models/conge';
+import { CongeService } from 'src/app/services/conge.service';
 
 @Component({
   selector: 'app-conge',
@@ -17,7 +19,7 @@ export class CongeComponent implements AfterViewInit {
     'date de retour',
     'etat',
   ];
-  dataSource = new MatTableDataSource<Conge>(ELEMENT_DATA);
+  dataSource!: MatTableDataSource<Conge>;
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -29,13 +31,30 @@ export class CongeComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  constructor() {}
+  constructor(private activatedRoute: ActivatedRoute,
+    private router: Router, private CS:CongeService) {
+      this.dataSource = new MatTableDataSource();
+
+      //To reload the component when the route is changed
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.fetchConge();
+  }
+  
+  fetchConge(){
+    let etatConger = this.activatedRoute.snapshot.params.etat;
+    this.CS.getCongeByEtat(etatConger).then((data) => {
+      this.dataSource.data = data;
+     
+    });
+
   }
 }
+
 
 const ELEMENT_DATA: Conge[] = [
   {
