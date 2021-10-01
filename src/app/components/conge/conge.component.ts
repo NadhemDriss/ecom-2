@@ -11,12 +11,7 @@ import { Conge } from 'src/app/models/conge';
   styleUrls: ['./conge.component.scss'],
 })
 export class CongeComponent implements AfterViewInit {
-  displayedColumns: string[] = [
-    'nombre de jours',
-    'date de sortie',
-    'date de retour',
-    'etat',
-  ];
+  displayedColumns: string[] = ['nbrJour', 'dateSortie', 'dateRetour', 'etat'];
   dataSource = new MatTableDataSource<Conge>(ELEMENT_DATA);
 
   @ViewChild(MatPaginator)
@@ -40,58 +35,58 @@ export class CongeComponent implements AfterViewInit {
 const ELEMENT_DATA: Conge[] = [
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 3,
+    dateSortie: new Date('2/11/2020'),
+    dateRetour: new Date('2/14/2020'),
     etat: 'Validé',
   },
   {
     id: 'moakdzo',
     nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    dateSortie: new Date('2/11/2020'),
+    dateRetour: new Date('2/23/2020'),
     etat: 'En Attente',
   },
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 10,
+    dateSortie: new Date('2/11/2020'),
+    dateRetour: new Date('2/21/2020'),
     etat: 'Validé',
   },
   {
     id: 'moakdzo',
     nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    dateSortie: new Date('2/04/2020'),
+    dateRetour: new Date('2/16/2020'),
     etat: 'En Attente',
   },
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 6,
+    dateSortie: new Date('2/4/2020'),
+    dateRetour: new Date('2/11/2020'),
     etat: 'Refusé',
   },
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 6,
+    dateSortie: new Date('2/11/2020'),
+    dateRetour: new Date('2/17/2020'),
     etat: 'En Attente',
   },
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 1,
+    dateSortie: new Date('2/11/2020'),
+    dateRetour: new Date('2/12/2020'),
     etat: 'En Attente',
   },
   {
     id: 'moakdzo',
-    nbrJour: 12,
-    dateSortie: new Date('11/18/2020'),
-    dateRetour: new Date('11/18/2020'),
+    nbrJour: 2,
+    dateSortie: new Date('2/1/2020'),
+    dateRetour: new Date('2/3/2020'),
     etat: 'Refusé',
   },
 ];
